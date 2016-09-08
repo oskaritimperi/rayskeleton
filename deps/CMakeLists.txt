@@ -1,0 +1,13 @@
+INCLUDE(ExternalProject)
+
+SET(INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/dist)
+SET(DEPS_INSTALL_DIR ${INSTALL_DIR} PARENT_SCOPE)
+
+ExternalProject_Add(raylib
+    GIT_REPOSITORY https://github.com/oswjk/raylib.git
+    GIT_TAG cmake
+    EXCLUDE_FROM_ALL 1
+    CMAKE_ARGS
+        -DPLATFORM_TO_USE=PLATFORM_DESKTOP
+        -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
+)
